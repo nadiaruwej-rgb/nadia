@@ -1,138 +1,175 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Boutique - Exemple</title>
+    <title>Nadia Studio - Boutique mode</title>
+    <meta name="description" content="Boutique mobile-first de vetements, chaussures et accessoires." />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <header class="site-header">
+      <div class="topbar">
+        <p>Livraison offerte des 75 EUR d'achat</p>
+      </div>
       <div class="container header-inner">
-        <div class="brand-area">
-          <h1 class="logo">Ma Boutique</h1>
-          <p class="brand-tag">Une boutique légère, moderne et facile à parcourir.</p>
-        </div>
-        <div class="search-box">
-          <input id="search-input" type="search" placeholder="Rechercher un produit..." aria-label="Rechercher un produit" />
-        </div>
-        <button id="cart-button" class="cart-button">Panier (<span id="cart-count">0</span>)</button>
+        <a class="logo" href="index.html" aria-label="Accueil Nadia Studio">
+          <span class="logo-mark">N</span>
+          <span>Nadia Studio</span>
+        </a>
+        <button id="cart-button" class="cart-button" type="button" aria-controls="cart" aria-expanded="false">
+          <span>Panier</span>
+          <strong id="cart-count">0</strong>
+        </button>
       </div>
-      <div class="container nav-wrap">
-        <nav class="nav-categories" id="categories"></nav>
-      </div>
+      <nav class="container main-nav" aria-label="Navigation principale">
+        <a class="active" href="index.html">Boutique</a>
+        <a href="a-propos.html">A propos</a>
+        <a href="livraison.html">Livraison</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </header>
 
-    <main class="container">
-      <section class="hero">
-        <div class="hero-grid">
+    <main>
+      <section class="shop-hero">
+        <div class="container shop-hero-inner">
           <div class="hero-copy">
-            <p class="eyebrow">Boutique en ligne</p>
-            <h2>Des articles stylés pour chaque occasion</h2>
-            <p class="hero-text">Découvrez des collections modernes, un service rapide et un panier facile à utiliser. Explorez les catégories favorites et trouvez votre nouveau look.</p>
+            <p class="eyebrow">Nouvelle selection</p>
+            <h1>Des essentiels mode, simples a choisir.</h1>
+            <p>
+              Une boutique claire, rapide et pensee mobile pour parcourir les looks,
+              filtrer les categories et commander en quelques gestes.
+            </p>
             <div class="hero-actions">
-              <button id="shop-now" class="btn">Commencer</button>
-              <button id="see-categories" class="btn btn-ghost">Voir les catégories</button>
+              <a class="btn" href="#products-section">Voir les produits</a>
+              <a class="btn btn-secondary" href="livraison.html">Infos livraison</a>
             </div>
           </div>
-          <div class="hero-feature">
-            <div class="feature-card">
-              <h3>Choisissez votre style</h3>
-              <p>Vêtements, accessoires et chaussures soigneusement sélectionnés pour un site clair et intuitif.</p>
-            </div>
-            <div class="feature-grid">
-              <div class="feature-pill">Livraison rapide</div>
-              <div class="feature-pill">Retours gratuits</div>
-              <div class="feature-pill">Paiement sécurisé</div>
-            </div>
+          <div class="hero-media" aria-label="Selection mode Nadia Studio">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80" alt="Cliente dans une boutique de vetements" />
           </div>
         </div>
       </section>
 
-      <section class="category-highlights" id="category-highlights">
-        <h3 class="section-title">Catégories populaires</h3>
-        <div class="category-cards">
-          <button class="category-card" data-cat="Vêtements">
-            <strong>Vêtements</strong>
-            <span>10 articles élégants</span>
-          </button>
-          <button class="category-card" data-cat="Accessoires">
-            <strong>Accessoires</strong>
-            <span>10 pièces essentielles</span>
-          </button>
-          <button class="category-card" data-cat="Chaussures">
-            <strong>Chaussures</strong>
-            <span>10 modèles tendance</span>
-          </button>
+      <section class="container shop-controls" aria-label="Recherche et categories">
+        <div class="search-box">
+          <label for="search-input">Rechercher</label>
+          <input id="search-input" type="search" placeholder="Robe, sac, baskets..." autocomplete="off" />
         </div>
+        <div class="nav-categories" id="categories" role="list"></div>
       </section>
 
-      <section id="products-section">
-        <h3 class="section-title">Produits</h3>
+      <section class="container benefits" aria-label="Avantages">
+        <article>
+          <strong>Retours 14 jours</strong>
+          <span>Essayez tranquillement chez vous.</span>
+        </article>
+        <article>
+          <strong>Paiement protege</strong>
+          <span>Simulation simple et rassurante.</span>
+        </article>
+        <article>
+          <strong>Panier sauvegarde</strong>
+          <span>Vos articles restent disponibles.</span>
+        </article>
+      </section>
+
+      <section class="container products-section" id="products-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Catalogue</p>
+            <h2>Produits disponibles</h2>
+          </div>
+          <p id="products-count" class="products-count"></p>
+        </div>
         <div class="products-grid" id="products"></div>
       </section>
     </main>
 
-    <aside id="cart" class="cart-panel" aria-hidden="true">
-      <button id="close-cart" class="close-cart">✕</button>
-      <h3>Votre panier</h3>
+    <aside id="cart" class="cart-panel" aria-hidden="true" aria-label="Panier">
+      <div class="cart-header">
+        <div>
+          <p class="eyebrow">Commande</p>
+          <h2>Votre panier</h2>
+        </div>
+        <button id="close-cart" class="icon-button" type="button" aria-label="Fermer le panier">x</button>
+      </div>
       <ul id="cart-items" class="cart-items"></ul>
       <div class="cart-footer">
-        <div class="cart-total">Total: <span id="cart-total">0.00</span> €</div>
-        <button id="checkout" class="checkout">Commander</button>
+        <div class="promo-line">
+          <span>Sous-total</span>
+          <strong><span id="cart-total">0.00</span> EUR</strong>
+        </div>
+        <p id="free-shipping" class="free-shipping"></p>
+        <div class="cart-actions">
+          <button id="clear-cart" class="btn btn-secondary" type="button">Vider</button>
+          <button id="checkout" class="btn" type="button">Commander</button>
+        </div>
       </div>
     </aside>
+    <button id="cart-backdrop" class="cart-backdrop" type="button" aria-label="Fermer le panier" hidden></button>
 
     <div id="payment-modal" class="modal" aria-hidden="true">
-      <div class="modal-content modal-payment">
-        <button id="close-payment" class="close-modal">✕</button>
-        <div class="payment-panel">
-          <h3>Paiement sécurisé</h3>
-          <p class="payment-note">Entrez des informations fictives pour simuler la commande.</p>
-          <form id="payment-form" class="payment-form">
+      <div class="modal-content modal-payment" role="dialog" aria-modal="true" aria-labelledby="payment-title">
+        <button id="close-payment" class="icon-button close-modal" type="button" aria-label="Fermer">x</button>
+        <p class="eyebrow">Paiement test</p>
+        <h2 id="payment-title">Finaliser la commande</h2>
+        <p class="muted">Ces informations sont fictives et servent seulement a simuler le parcours.</p>
+        <form id="payment-form" class="payment-form">
+          <div class="field">
+            <label for="buyer-name">Nom complet</label>
+            <input id="buyer-name" type="text" placeholder="Nadia Mbuyi" required />
+          </div>
+          <div class="field">
+            <label for="card-number">Numero de carte</label>
+            <input id="card-number" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456" required />
+          </div>
+          <div class="field-row">
             <div class="field">
-              <label for="buyer-name">Nom complet</label>
-              <input id="buyer-name" type="text" placeholder="Jean Dupont" required />
+              <label for="expiry">Expiration</label>
+              <input id="expiry" type="text" placeholder="MM/AA" maxlength="5" required />
             </div>
             <div class="field">
-              <label for="card-number">Numéro de carte</label>
-              <input id="card-number" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456" required />
+              <label for="cvc">CVC</label>
+              <input id="cvc" type="text" inputmode="numeric" maxlength="4" placeholder="123" required />
             </div>
-            <div class="field-row">
-              <div class="field small">
-                <label for="expiry">Date d'expiration</label>
-                <input id="expiry" type="text" placeholder="MM/AA" maxlength="5" required />
-              </div>
-              <div class="field small">
-                <label for="cvc">CVC</label>
-                <input id="cvc" type="text" inputmode="numeric" maxlength="4" placeholder="123" required />
-              </div>
-            </div>
-            <div class="payment-summary">
-              <span>Total à payer</span>
-              <strong id="payment-amount">0.00 €</strong>
-            </div>
-            <button type="submit" class="btn">Valider le paiement</button>
-            <p id="payment-status" class="payment-status"></p>
-          </form>
-        </div>
+          </div>
+          <div class="payment-summary">
+            <span>Total a payer</span>
+            <strong id="payment-amount">0.00 EUR</strong>
+          </div>
+          <button type="submit" class="btn">Valider le paiement</button>
+          <p id="payment-status" class="payment-status" role="status"></p>
+        </form>
       </div>
     </div>
 
     <div id="product-modal" class="modal" aria-hidden="true">
-      <div class="modal-content">
-        <button id="close-modal" class="close-modal">✕</button>
+      <div class="modal-content product-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button id="close-modal" class="icon-button close-modal" type="button" aria-label="Fermer">x</button>
         <img id="modal-image" src="" alt="" />
         <div class="modal-info">
-          <h3 id="modal-title"></h3>
-          <p id="modal-desc"></p>
+          <p id="modal-category" class="eyebrow"></p>
+          <h2 id="modal-title"></h2>
+          <p id="modal-desc" class="muted"></p>
           <div class="modal-buy">
-            <div class="price" id="modal-price"></div>
-            <button id="modal-add" class="btn">Ajouter au panier</button>
+            <strong class="price" id="modal-price"></strong>
+            <button id="modal-add" class="btn" type="button">Ajouter au panier</button>
           </div>
         </div>
       </div>
     </div>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>Nadia Studio</p>
+        <nav aria-label="Navigation secondaire">
+          <a href="a-propos.html">A propos</a>
+          <a href="livraison.html">Livraison</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </footer>
 
     <script src="js/script.js"></script>
   </body>
