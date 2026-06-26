@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Boutique - Exemple</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand-area">
+          <h1 class="logo">Ma Boutique</h1>
+          <p class="brand-tag">Une boutique légère, moderne et facile à parcourir.</p>
+        </div>
+        <div class="search-box">
+          <input id="search-input" type="search" placeholder="Rechercher un produit..." aria-label="Rechercher un produit" />
+        </div>
+        <button id="cart-button" class="cart-button">Panier (<span id="cart-count">0</span>)</button>
+      </div>
+      <div class="container nav-wrap">
+        <nav class="nav-categories" id="categories"></nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Boutique en ligne</p>
+            <h2>Des articles stylés pour chaque occasion</h2>
+            <p class="hero-text">Découvrez des collections modernes, un service rapide et un panier facile à utiliser. Explorez les catégories favorites et trouvez votre nouveau look.</p>
+            <div class="hero-actions">
+              <button id="shop-now" class="btn">Commencer</button>
+              <button id="see-categories" class="btn btn-ghost">Voir les catégories</button>
+            </div>
+          </div>
+          <div class="hero-feature">
+            <div class="feature-card">
+              <h3>Choisissez votre style</h3>
+              <p>Vêtements, accessoires et chaussures soigneusement sélectionnés pour un site clair et intuitif.</p>
+            </div>
+            <div class="feature-grid">
+              <div class="feature-pill">Livraison rapide</div>
+              <div class="feature-pill">Retours gratuits</div>
+              <div class="feature-pill">Paiement sécurisé</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="category-highlights" id="category-highlights">
+        <h3 class="section-title">Catégories populaires</h3>
+        <div class="category-cards">
+          <button class="category-card" data-cat="Vêtements">
+            <strong>Vêtements</strong>
+            <span>10 articles élégants</span>
+          </button>
+          <button class="category-card" data-cat="Accessoires">
+            <strong>Accessoires</strong>
+            <span>10 pièces essentielles</span>
+          </button>
+          <button class="category-card" data-cat="Chaussures">
+            <strong>Chaussures</strong>
+            <span>10 modèles tendance</span>
+          </button>
+        </div>
+      </section>
+
+      <section id="products-section">
+        <h3 class="section-title">Produits</h3>
+        <div class="products-grid" id="products"></div>
+      </section>
+    </main>
+
+    <aside id="cart" class="cart-panel" aria-hidden="true">
+      <button id="close-cart" class="close-cart">✕</button>
+      <h3>Votre panier</h3>
+      <ul id="cart-items" class="cart-items"></ul>
+      <div class="cart-footer">
+        <div class="cart-total">Total: <span id="cart-total">0.00</span> €</div>
+        <button id="checkout" class="checkout">Commander</button>
+      </div>
+    </aside>
+
+    <div id="payment-modal" class="modal" aria-hidden="true">
+      <div class="modal-content modal-payment">
+        <button id="close-payment" class="close-modal">✕</button>
+        <div class="payment-panel">
+          <h3>Paiement sécurisé</h3>
+          <p class="payment-note">Entrez des informations fictives pour simuler la commande.</p>
+          <form id="payment-form" class="payment-form">
+            <div class="field">
+              <label for="buyer-name">Nom complet</label>
+              <input id="buyer-name" type="text" placeholder="Jean Dupont" required />
+            </div>
+            <div class="field">
+              <label for="card-number">Numéro de carte</label>
+              <input id="card-number" type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456" required />
+            </div>
+            <div class="field-row">
+              <div class="field small">
+                <label for="expiry">Date d'expiration</label>
+                <input id="expiry" type="text" placeholder="MM/AA" maxlength="5" required />
+              </div>
+              <div class="field small">
+                <label for="cvc">CVC</label>
+                <input id="cvc" type="text" inputmode="numeric" maxlength="4" placeholder="123" required />
+              </div>
+            </div>
+            <div class="payment-summary">
+              <span>Total à payer</span>
+              <strong id="payment-amount">0.00 €</strong>
+            </div>
+            <button type="submit" class="btn">Valider le paiement</button>
+            <p id="payment-status" class="payment-status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="product-modal" class="modal" aria-hidden="true">
+      <div class="modal-content">
+        <button id="close-modal" class="close-modal">✕</button>
+        <img id="modal-image" src="" alt="" />
+        <div class="modal-info">
+          <h3 id="modal-title"></h3>
+          <p id="modal-desc"></p>
+          <div class="modal-buy">
+            <div class="price" id="modal-price"></div>
+            <button id="modal-add" class="btn">Ajouter au panier</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
